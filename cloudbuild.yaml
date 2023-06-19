@@ -4,7 +4,7 @@ steps:
   #  args: ['ci']
 
   - name: 'gcr.io/cloud-builders/npm'
-    args: ['npm', 'install']
+    args: ['install']
 
   # Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
