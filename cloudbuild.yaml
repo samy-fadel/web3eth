@@ -1,0 +1,30 @@
+steps:
+  # Install dependencies and build the project
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['ci']
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'build']
+
+ # Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'REGION-docker.pkg.dev/$PROJECT_ID/ethindex/my-cloud-run-image', '.']
+    env:
+      - 'REGION=europe-west9'  # Replace with the desired region
+
+  # Push the Docker image to Google Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'REGION-docker.pkg.dev/$PROJECT_ID/ethindex/my-cloud-run-image']
+    env:
+      - 'REGION=REGION_NAME'  # Replace with the desired region
+
+  # Deploy the image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'my-cloud-run-service'
+      - '--image=gcr.io/$PROJECT_ID/my-cloud-run-image'
+      - '--platform=managed'
+      - '--region=us-central1'
+      - '--allow-unauthenticated'
