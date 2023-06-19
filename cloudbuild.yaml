@@ -6,17 +6,17 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     args: ['run', 'build']
 
- # Build the Docker image
+  # Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'REGION-docker.pkg.dev/$PROJECT_ID/ethindex/my-cloud-run-image', '.']
+    args: ['build', '-t', 'europe-west9-docker.pkg.dev/gkemedium/ethindex/my-cloud-run-image', '.']
     env:
-      - 'REGION=europe-west9'  # Replace with the desired region
+      - 'REGION=europe-west9'
 
   # Push the Docker image to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'REGION-docker.pkg.dev/$PROJECT_ID/ethindex/my-cloud-run-image']
+    args: ['push', 'europe-west9-docker.pkg.dev/gkemedium/ethindex/my-cloud-run-image']
     env:
-      - 'REGION=europe-west9'  # Replace with the desired region
+      - 'REGION=europe-west9'
 
   # Deploy the image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -25,7 +25,7 @@ steps:
       - 'run'
       - 'deploy'
       - 'my-cloud-run-service'
-      - '--image=gcr.io/$PROJECT_ID/my-cloud-run-image'
+      - '--image=europe-west9-docker.pkg.dev/gkemedium/ethindex/my-cloud-run-image'
       - '--platform=managed'
-      - '--region=us-central1'
+      - '--region=europe-west9'
       - '--allow-unauthenticated'
