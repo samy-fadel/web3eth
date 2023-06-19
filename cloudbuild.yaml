@@ -1,7 +1,7 @@
 steps:
   # Install dependencies and build the project
-  - name: 'gcr.io/cloud-builders/npm'
-    args: ['ci']
+ # - name: 'gcr.io/cloud-builders/npm'
+  #  args: ['ci']
 
   - name: 'gcr.io/cloud-builders/npm'
     args: ['run', 'build']
