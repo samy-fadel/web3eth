@@ -13,6 +13,7 @@ const db = admin.firestore();
 // Connect to an Ethereum node
 const web3 = new Web3('json-rpc.2mnk2ypckfrt988whmbu8lc8n.blockchainnodeengine.com');
 
+
 // Define the starting and ending block numbers to index
 const startBlock = 0;
 const endBlock = 'latest';
