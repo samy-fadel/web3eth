@@ -2,16 +2,25 @@ const Web3 = require('web3');
 const admin = require('firebase-admin');
 
 // Initialize Firebase Admin SDK
-admin.initializeApp({
-  credential: admin.credential.applicationDefault(),
-  databaseURL: 'YOUR_FIRESTORE_DATABASE_URL'
-});
+// admin.initializeApp({
+//   credential: admin.credential.applicationDefault(),
+//   databaseURL: 'YOUR_FIRESTORE_DATABASE_URL'
+// });
 
 // Initialize Firestore
-const db = admin.firestore();
+//const db = admin.firestore();
+
+const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
+const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
+
+initializeApp({
+  credential: applicationDefault()
+});
+
+const db = getFirestore();
 
 // Connect to an Ethereum node
-const web3 = new Web3('http://json-rpc.2mnk2ypckfrt988whmbu8lc8n.blockchainnodeengine.com?key=');
+const web3 = new Web3('http://json-rpc.2mnk2ypckfrt988whmbu8lc8n.blockchainnodeengine.com?key=AIzaSyCj0UG5tcZCy8vPH9DreznhsKhrs6fBeDo');
 
 
 // Define the starting and ending block numbers to index
