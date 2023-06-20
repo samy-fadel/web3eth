@@ -11,7 +11,7 @@ admin.initializeApp({
 const db = admin.firestore();
 
 // Connect to an Ethereum node
-const web3 = new Web3('http://json-rpc.2mnk2ypckfrt988whmbu8lc8n.blockchainnodeengine.com?key=AIzaSyCj0UG5tcZCy8vPH9DreznhsKhrs6fBeDo');
+const web3 = new Web3('http://json-rpc.2mnk2ypckfrt988whmbu8lc8n.blockchainnodeengine.com?key=');
 
 
 // Define the starting and ending block numbers to index
