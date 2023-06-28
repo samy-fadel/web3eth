@@ -6,6 +6,7 @@ initializeApp({
   credential: applicationDefault()
 });
 
+const startBlock = 0; // Define and assign a value to startBlock
 const db = getFirestore();
 const web3 = new Web3('http://json-rpc.2mnk2ypckfrt988whmbu8lc8n.blockchainnodeengine.com?key=AIzaSyCj0UG5tcZCy8vPH9DreznhsKhrs6fBeDo');
 
