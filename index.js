@@ -49,19 +49,25 @@ async function indexContracts(blockNumber) {
   }
 }
 
-async function indexAllContracts() {
-  const latestBlockNumber = await web3.eth.getBlockNumber();
-
-  console.log('Start indexing contracts...');
+async function indexAllBlocks() {
+  console.log('Start indexing blocks...');
   console.log('-------------------------');
 
-  for (let blockNumber = latestBlockNumber; blockNumber >= 0; blockNumber--) {
-    console.log('Indexing block number:', blockNumber);
-    await indexContracts(blockNumber);
+  try {
+    let blockNumber = 0;
+    const latestBlockNumber = await web3.eth.getBlockNumber();
+
+    while (blockNumber <= latestBlockNumber) {
+      console.log('Indexing block number:', blockNumber);
+      await indexContracts(blockNumber);
+      blockNumber++;
+    }
+
+    console.log('-------------------------');
+    console.log('Finished indexing blocks.');
+  } catch (error) {
+    console.error('Error indexing blocks:', error);
   }
-
-  console.log('-------------------------');
-  console.log('Finished indexing contracts.');
 }
 
-indexAllContracts();
+indexAllBlocks();
