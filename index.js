@@ -7,7 +7,7 @@ initializeApp({
 });
 
 const db = getFirestore();
-const web3 = new Web3('http://json-rpc.2mnk2ypckfrt988whmbu8lc8n.blockchainnodeengine.com?key=AIzaSyCj0UG5tcZCy8vPH9DreznhsKhrs6fBeDo');
+const web3 = new Web3('http://json-rpc.2mnk2ypckfrt988whmbu8lc8n.blockchainnodeengine.com?key=gjgjg');
 
 async function contractExists(contractAddress) {
   const snapshot = await db.collection('contracts').doc(contractAddress).get();
