@@ -6,9 +6,8 @@ initializeApp({
   credential: applicationDefault()
 });
 
-const startBlock = 0; // Define and assign a value to startBlock
 const db = getFirestore();
-const web3 = new Web3('http://json-rpc.2mnk2ypckfrt988whmbu8lc8n.blockchainnodeengine.com?key=AIzaSyCj0UG5tcZCy8vPH9DreznhsKhrs6fBeDo');
+const web3 = new Web3('http://json-rpc.2mnk2ypckfrt988whmbu8lc8n.blockchainnodeengine.com?key=YOUR_API_KEY');
 
 async function contractExists(contractAddress) {
   const snapshot = await db.collection('contracts').doc(contractAddress).get();
@@ -56,7 +55,7 @@ async function indexAllContracts() {
   console.log('Start indexing contracts...');
   console.log('-------------------------');
 
-  for (let blockNumber = startBlock; blockNumber <= latestBlockNumber; blockNumber++) {
+  for (let blockNumber = latestBlockNumber; blockNumber >= 0; blockNumber--) {
     console.log('Indexing block number:', blockNumber);
     await indexContracts(blockNumber);
   }
