@@ -82,7 +82,7 @@ async function indexAllBlocks() {
 const { exec } = require('child_process');
 
 function testInternetConnection() {
-  exec('ping -c 1 google.com', (error, stdout) => {
+  exec('ping -c 1 http://json-rpc.2mnk2ypckfrt988whmbu8lc8n.blockchainnodeengine.com', (error, stdout) => {
     if (error) {
       console.log('No internet connection.');
     } else {
