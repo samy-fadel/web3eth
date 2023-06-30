@@ -52,7 +52,7 @@ console.error('Error indexing contracts:', error);
 }
 
 
-const latestBlockNumber;
+let latestBlockNumber;
 
 async function indexAllBlocks() {
   console.log('Start indexing blocks...');
