@@ -14,7 +14,7 @@ const web3 = new Web3('http://json-rpc.2mnk2ypckfrt988whmbu8lc8n.blockchainnodee
 
 
 
-web3.eth.getBlockNumber()
+web3.eth.getBlockNumber('latest')
   .then(blockNumber => {
     console.log('blockNumber is :', blockNumber);
   })
