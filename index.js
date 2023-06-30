@@ -25,7 +25,6 @@ async function getLatestBlockNumber() {
   }
 }
 
-let latestBlockNumber = await getLatestBlockNumber();
 
 async function indexContracts(blockNumber) {
 try {
@@ -65,6 +64,7 @@ async function indexAllBlocks() {
 
   try {
     let blockNumber = web3.eth.blockNumber;
+    let latestBlockNumber = await getLatestBlockNumber();
 
     while (blockNumber <= latestBlockNumber) {
       console.log('Indexing block number:', blockNumber);
