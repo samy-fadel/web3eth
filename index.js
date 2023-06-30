@@ -62,8 +62,9 @@ async function indexAllBlocks() {
   try {
     //let blockNumber = web3.eth.blockNumber;
     //console.log(blockNumber);
+    let blockNumber = 0;
     let latestBlockNumber = await getLatestBlockNumber();
-    console.log(getLatestBlockNumber);
+    console.log(latestBlockNumber);
 
     while (blockNumber <= latestBlockNumber) {
       console.log('Indexing block number:', blockNumber);
