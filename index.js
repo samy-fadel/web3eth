@@ -64,7 +64,9 @@ async function indexAllBlocks() {
     //console.log(blockNumber);
     let blockNumber = 0;
     let latestBlockNumber = await getLatestBlockNumber();
-    console.log(latestBlockNumber);
+    console.log();
+    console.log('latestBlockNumber: ', latestBlockNumber);
+
 
     while (blockNumber <= latestBlockNumber) {
       console.log('Indexing block number:', blockNumber);
