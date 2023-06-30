@@ -73,25 +73,27 @@ console.error('Error indexing contracts:', error);
 }
 }
 
+
 async function indexAllBlocks() {
-console.log('Start indexing blocks...');
-console.log('-------------------------');
+  console.log('Start indexing blocks...');
+  console.log('-------------------------');
 
-try {
-let blockNumber = web3.eth.blockNumber;
-const latestBlockNumber = await web3.eth.getBlockNumber();
+  try {
+    let blockNumber = web3.eth.blockNumber;
+    const latestBlockNumber;
 
-while (blockNumber <= latestBlockNumber) {
-  console.log('Indexing block number:', blockNumber);
-  await indexContracts(blockNumber);
-  blockNumber++;
+    while (blockNumber <= latestBlockNumber) {
+      console.log('Indexing block number:', blockNumber);
+      await indexContracts(blockNumber);
+      blockNumber++;
+    }
+
+    console.log('-------------------------');
+    console.log('Finished indexing blocks.');
+  } catch (error) {
+    console.error('Error indexing blocks:', error);
+  }
 }
 
-console.log('-------------------------');
-console.log('Finished indexing blocks.');
-} catch (error) {
-console.error('Error indexing blocks:', error);
-}
-}
 
 indexAllBlocks();
