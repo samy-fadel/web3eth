@@ -14,7 +14,6 @@ const web3 = new Web3('http://json-rpc.2mnk2ypckfrt988whmbu8lc8n.blockchainnodee
 
 async function getLatestBlockNumber() {
   try {
-    const web3 = new Web3('http://localhost:8545'); // Replace with your Ethereum node URL
 
     // Get the latest block number
     const blockNumber = await web3.eth.getBlockNumber();
@@ -55,8 +54,6 @@ for (let i = 0; i < transactions.length; i++) {
 console.error('Error indexing contracts:', error);
 }
 }
-
-
 
 async function indexAllBlocks() {
   console.log('Start indexing blocks...');
