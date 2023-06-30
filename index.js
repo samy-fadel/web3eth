@@ -25,8 +25,7 @@ async function getLatestBlockNumber() {
   }
 }
 
-const latestBlockNumber = await getLatestBlockNumber();
-
+let latestBlockNumber = await getLatestBlockNumber();
 
 async function indexContracts(blockNumber) {
 try {
