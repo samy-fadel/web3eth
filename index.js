@@ -18,6 +18,7 @@ async function getLatestBlockNumber() {
     const blockNumber = await web3.eth.getBlockNumber();
 
     console.log('Latest block number:', blockNumber);
+    return blockNumber;
   } catch (error) {
     console.error('Error getting latest block number:', error);
   }
@@ -59,8 +60,8 @@ async function indexAllBlocks() {
   console.log('-------------------------');
 
   try {
-    let blockNumber = await web3.eth.blockNumber;
-    console.log(blockNumber);
+    //let blockNumber = web3.eth.blockNumber;
+    //console.log(blockNumber);
     let latestBlockNumber = await getLatestBlockNumber();
     console.log(getLatestBlockNumber);
 
