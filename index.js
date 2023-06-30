@@ -1,26 +1,4 @@
 
-Your code is missing a few things to index all the smart contracts in the Ethereum blockchain. Here are the changes you need to make:
-
-You need to change the indexContracts function to loop through all the transactions in the block, not just the first one. You can do this by changing the following line:
-const transactions = block.transactions;
-to:
-
-const transactions = block.transactions.slice(0);
-You need to change the contractExists function to check if the contract already exists in the Firestore database, not just in the local cache. You can do this by changing the following line:
-const snapshot = await db.collection('contracts').doc(contractAddress).get();
-to:
-
-const snapshot = await db.collection('contracts').doc(contractAddress).get();
-const exists = snapshot.exists && snapshot.data.address === contractAddress;
-You need to change the indexAllBlocks function to start from the genesis block, not from block number 0. You can do this by changing the following line:
-let blockNumber = 0;
-to:
-
-let blockNumber = web3.eth.blockNumber;
-Once you have made these changes, your code should be able to index all the smart contracts in the Ethereum blockchain.
-
-Here is the complete code with the changes I have mentioned:
-
 const Web3 = require('web3');
 const { initializeApp, applicationDefault } = require('firebase-admin/app');
 const { getFirestore } = require('firebase-admin/firestore');
