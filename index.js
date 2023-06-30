@@ -74,13 +74,14 @@ console.error('Error indexing contracts:', error);
 }
 
 
+const latestBlockNumber;
+
 async function indexAllBlocks() {
   console.log('Start indexing blocks...');
   console.log('-------------------------');
 
   try {
     let blockNumber = web3.eth.blockNumber;
-    const latestBlockNumber;
 
     while (blockNumber <= latestBlockNumber) {
       console.log('Indexing block number:', blockNumber);
