@@ -13,14 +13,12 @@ const web3 = new Web3('http://json-rpc.2mnk2ypckfrt988whmbu8lc8n.blockchainnodee
 
 async function getLatestBlockNumber() {
   try {
-
-    // Get the latest block number
     const blockNumber = await web3.eth.getBlockNumber();
-
     console.log('Latest block number:', blockNumber);
     return blockNumber;
   } catch (error) {
     console.error('Error getting latest block number:', error);
+    throw error; // or return a default value: e.g., return 0;
   }
 }
 
@@ -64,7 +62,6 @@ async function indexAllBlocks() {
     //console.log(blockNumber);
     let blockNumber = 0;
     let latestBlockNumber = await getLatestBlockNumber();
-    console.log();
     console.log('latestBlockNumber: ', latestBlockNumber);
 
 
