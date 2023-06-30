@@ -79,4 +79,20 @@ async function indexAllBlocks() {
 }
 
 
-indexAllBlocks();
+const { exec } = require('child_process');
+
+function testInternetConnection() {
+  exec('ping -c 1 google.com', (error, stdout) => {
+    if (error) {
+      console.log('No internet connection.');
+    } else {
+      console.log('Internet connection is available.');
+    }
+  });
+}
+
+testInternetConnection();
+
+
+
+//indexAllBlocks();
