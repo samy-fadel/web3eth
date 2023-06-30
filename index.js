@@ -3,6 +3,8 @@ const Web3 = require('web3');
 const { initializeApp, applicationDefault } = require('firebase-admin/app');
 const { getFirestore } = require('firebase-admin/firestore');
 
+let latestBlockNumber;
+
 initializeApp({
 credential: applicationDefault()
 });
@@ -10,11 +12,7 @@ credential: applicationDefault()
 const db = getFirestore();
 const web3 = new Web3('http://json-rpc.2mnk2ypckfrt988whmbu8lc8n.blockchainnodeengine.com?key=AIzaSyCj0UG5tcZCy8vPH9DreznhsKhrs6fBeDo');
 
-async function contractExists(contractAddress) {
-const snapshot = await db.collection('contracts').doc(contractAddress).get();
-const exists = snapshot.exists && snapshot.data.address === contractAddress;
-return exists;
-}
+
 
 async function indexContracts(blockNumber) {
 try {
@@ -27,12 +25,7 @@ for (let i = 0; i < transactions.length; i++) {
   if (transaction.to === null) {
     const contractAddress = transaction.creates;
 
-    const exists = await contractExists(contractAddress);
-    if (exists) {
-      console.log('Contract already exists:', contractAddress);
-      console.log('-------------------------');
-      continue;
-    }
+  
 
     const contract = await web3.eth.getCode(contractAddress);
 
@@ -52,7 +45,6 @@ console.error('Error indexing contracts:', error);
 }
 
 
-let latestBlockNumber;
 
 async function indexAllBlocks() {
   console.log('Start indexing blocks...');
