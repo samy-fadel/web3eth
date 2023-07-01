@@ -8,7 +8,7 @@ credential: applicationDefault()
 });
 
 const db = getFirestore();
-const web3 = new Web3('http://json-rpc.2mnk2ypckfrt988whmbu8lc8n.blockchainnodeengine.com?key=AIzaSyCj0UG5tcZCy8vPH9DreznhsKhrs6fBeDo');
+const web3 = new Web3('http://json-rpc.2mnk2ypckfrt988whmbu8lc8n.blockchainnodeengine.com?key=api');
 
 
 async function getLatestBlockNumber() {
@@ -21,8 +21,6 @@ async function getLatestBlockNumber() {
     throw error;
   }
 }
-
-
 
 
 getLatestBlockNumber();
